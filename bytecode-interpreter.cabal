@@ -1,0 +1,94 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.34.4.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: 862c8109f559d4557745cd5fc3fee5f0806ddc4a62a987c3ac52d93459f8cc64
+
+name:           bytecode-interpreter
+version:        0.1.0.0
+description:    Please see the README on GitHub at <https://github.com/githubuser/bytecode-interpreter#readme>
+author:         Diego Murillo
+maintainer:     diego.spd@gmail.com
+copyright:      2021 Diego Murillo
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+    ChangeLog.md
+
+library
+  exposed-modules:
+      Eval
+      Eval.Instruction
+      Eval.Operands
+      Eval.Operator
+      Eval.Sync.Atomic
+      Eval.Sync.Instruction
+      Eval.Sync.Operator
+      Helpers.Bytecode
+      Helpers.Machines
+      Helpers.StackMachine
+      Lib
+      StackMachine.Context
+      StackMachine.Eval
+      StackMachine.Stack
+      StackMachine.State
+      StackMachine.Sync.Context
+      StackMachine.Sync.Eval
+      StackMachine.Sync.Stack
+      StackMachine.Sync.State
+      Types.Bytecode
+      Types.StackMachine
+  other-modules:
+      Paths_bytecode_interpreter
+  hs-source-dirs:
+      src
+  build-depends:
+      base >=4.7 && <5
+    , containers
+    , hashmap
+    , microlens-platform
+    , mtl
+    , stm
+    , transformers
+  default-language: Haskell2010
+
+executable bytecode-interpreter-exe
+  main-is: Main.hs
+  other-modules:
+      Paths_bytecode_interpreter
+  hs-source-dirs:
+      app
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , bytecode-interpreter
+    , containers
+    , hashmap
+    , microlens-platform
+    , mtl
+    , stm
+    , transformers
+  default-language: Haskell2010
+
+test-suite bytecode-interpreter-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Paths_bytecode_interpreter
+  hs-source-dirs:
+      test
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , bytecode-interpreter
+    , containers
+    , hashmap
+    , microlens-platform
+    , mtl
+    , stm
+    , transformers
+  default-language: Haskell2010
